@@ -21,7 +21,7 @@ $db = mysqli_connect('localhost','root','','bot');
 # buat tabel untuk menyimpan input user
 $db->query("CREATE TABLE IF NOT EXISTS bot ($kolom)");
 # inisiasi bot telegram
-$bot = new PHPTelebot('1641337330:AAE-qbPA8dMObWhPJV8FINdfWOyRB6UZ9Zg', 'danns4bot');
+$bot = new PHPTelebot('tokenbot', 'namabot');
 # jika user mengirim '/start'
 $bot->cmd('/start',function()use($formulir,$nama_kolom,$db){
     $msg = Bot::message();
