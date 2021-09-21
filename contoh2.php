@@ -15,9 +15,9 @@ $formulir = [
 ];
 $jumlah_kolom = count($formulir);
 $nama_kolom = array_keys($formulir);
-$kolom = implode(' VARCHAR(255),',$nama_kolom).' VARCHAR(255), id INT(10)';
+$kolom = implode(' VARCHAR(4096),',$nama_kolom).' VARCHAR(4096), id INT(10)';
 # sesuaikan koneksi ke database (MySQL)
-$db = mysqli_connect('localhost','root','','bot');
+$db = mysqli_connect('localhost','root','bismillah','bot');
 # buat tabel untuk menyimpan input user
 $db->query("CREATE TABLE IF NOT EXISTS bot ($kolom)");
 # inisiasi bot telegram
