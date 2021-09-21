@@ -1,5 +1,6 @@
 <img src="https://github.com/dannsbass/bot-pendaftaran/blob/master/img/bot-pendaftaran.jpg">
-
+<img src="https://github.com/dannsbass/bot-pendaftaran/blob/master/img/contoh2.jpg">
+<img src="https://github.com/dannsbass/bot-pendaftaran/blob/master/img/data_pengguna_bot.jpg">
 # Bot Pendaftaran
 Bot Telegram sederhana dengan bahasa PHP untuk membantu proses pendaftaran
 
