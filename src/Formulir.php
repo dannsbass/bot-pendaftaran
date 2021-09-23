@@ -18,7 +18,7 @@ class Formulir{
     
     # bersihkan nama kolom dari karakter yang tak diinginkan
     foreach ($draft as $kolom => $pertanyaan){
-      $formulir[preg_replace('/[^0-9a-zA-Z_]+/','_',$kolom)] = $pertanyaan;
+      $formulir[self::sterilkan($kolom)] = $pertanyaan;
     }
     
     $jumlah_kolom = count($formulir);
@@ -26,6 +26,8 @@ class Formulir{
     $nama_kolom = array_keys($formulir);
     
     $kolom = implode(' VARCHAR(4096),',$nama_kolom).' VARCHAR(4096), id INT(10)';
+    
+    $nama_tabel = self::sterilkan($nama_tabel);
     
     # buat tabel baru kalau belum ada
     $db->query("CREATE TABLE IF NOT EXISTS $nama_tabel ($kolom)");
@@ -121,6 +123,11 @@ class Formulir{
         }
     });
     $bot->run();
+  }
+  
+  # output: string yang sudah disterilkan
+  private static function sterilkan($nama){
+    return preg_replace('/[^0-9a-zA-Z_]+/','_',$nama);
   }
 }
 require_once __DIR__.'/PHPTelebot.php';
