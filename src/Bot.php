@@ -62,6 +62,10 @@ class Bot
             $data['reply_markup'] = json_encode($data['reply_markup']);
         }
 
+# tambahan danns mulai
+if (function_exists('curl_version')) {
+# tambahan danns selesai
+
         $ch = curl_init();
         $options = [
             CURLOPT_URL => 'https://api.telegram.org/bot'.PHPTelebot::$token.'/'.$action,
@@ -88,6 +92,38 @@ class Bot
         }
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+
+# tambahan danns mulai        
+}else{
+  $url = 'https://api.telegram.org/bot'.PHPTelebot::$token.'/'.$action;
+  
+  if (is_array($data)) {
+    $data = $data;
+  }
+
+$data = http_build_query($data);
+
+# header
+if ($upload !== false) {
+  $header = 'Content-Type: multipart/form-data';
+}else{
+  $header = 'Content-Type: application/x-www-form-urlencoded';
+}
+
+$opts=[
+'http'=>[
+'method'=>"POST",
+'header'=>$header,
+'content'=>$data
+   ]
+];
+
+$context=stream_context_create($opts);
+
+$result=file_get_contents($url,false,$context);
+$httpcode = null;
+}
+#tambahan danns selesai
 
         if (PHPTelebot::$debug && $action != 'getUpdates') {
             self::$debug .= 'Method: '.$action."\n";

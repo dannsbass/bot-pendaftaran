@@ -69,7 +69,7 @@ class PHPTelebot
 
         // Check curl
         if (!function_exists('curl_version')) {
-            die("cURL is NOT installed on this server.\n");
+            #die("cURL is NOT installed on this server.\n"); # sudah dihandle oleh file_get_contents
         }
 
         // Check bot token
